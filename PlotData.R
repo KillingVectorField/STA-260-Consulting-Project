@@ -59,7 +59,7 @@ df_Nk
 neg_IDD = c(17,19,24,26,27,28,29,30,31,32,44,48,52,53,60,61,65,67,68,69,72,74,70,91,93)
 length(neg_IDD)
 #strange ones:
-sta_IDD = c(3,4,19,20,22,23,39,40,41,46,34,66,77,80,88,89,92)
+stra_IDD = c(3,4,19,20,22,23,39,40,41,46,34,66,77,80,88,89,92)
 length(sta_IDD)
 df[which(df$IDD %in% sta_IDD),]
 #normal ones:outliers are contained
