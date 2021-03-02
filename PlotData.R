@@ -7,7 +7,7 @@ data = read.csv("Compost_StatsClass_021521[26705].csv")
 df <- data %>% 
       mutate(IDD = group_indices(.,Curve_ID,Amendment,Soil,Temperature,WHC)) 
 table(df$IDD)
-#delete IDD #7 because there is one one sample for the curve
+#delete IDD #7 because there is only one sample for the curve
 df = df[-which(df$IDD==7),]
 
 fn = function(par)function(t){
