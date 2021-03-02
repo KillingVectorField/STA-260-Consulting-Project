@@ -8,7 +8,7 @@ data = read.csv("Compost_StatsClass_021521[26705].csv")
 #New curve ID is IDD
 
 df <- data %>% 
-      mutate(IDD = group_indices(.,Curve_ID,Amendment,Soil,Temperature,WHC)) 
+  mutate(IDD = group_indices(.,Curve_ID,Amendment,Soil,Temperature,WHC)) 
 table(df$IDD)
 
 #delete IDD #7 because there is one one sample for the curve
@@ -37,10 +37,10 @@ for(i in unique(df$IDD)){
   opt = optim(c(Nim[length(t)],1),loss)
   N0k = rbind(N0k,opt$par)
   pp <- ggplot() + 
-          xlim(0, max(t))+ 
-          geom_function(fun = fn(opt$par)) + 
-          geom_point(aes(x=t,y=Nim),col = "blue") + 
-          ggtitle(paste("IDD",i,(df_i$Amendment),df_i$Soil,"TEMP",df_i$Temperature,"WHC",df_i$WHC))
+    xlim(0, max(t))+ 
+    geom_function(fun = fn(opt$par)) + 
+    geom_point(aes(x=t,y=Nim),col = "blue") + 
+    ggtitle(paste("IDD",i,(df_i$Amendment),df_i$Soil,"TEMP",df_i$Temperature,"WHC",df_i$WHC))
   print(pp)
 }
 
