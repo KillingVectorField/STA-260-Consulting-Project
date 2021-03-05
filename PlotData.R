@@ -2,7 +2,7 @@ setwd("E:/E-BOOK/STA 260/")
 library(ggplot2)
 library(dplyr)
 library(stringr)
-# test for github - Yue
+
 data = read.csv("Compost_StatsClass_021521[26705].csv")
 data = filter(data, N.min.amd.pct >= 0)
 
