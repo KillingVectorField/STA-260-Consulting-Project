@@ -51,19 +51,19 @@ for(i in unique(df$IDD)){
 #delete outliers for each curve
 df_clean = df %>%
   filter(  !((IDD == 3 & Time %in% c(2,3)) |
-           (IDD == 4 & Time %in% c(3,8))|
-           (IDD == 42 & round(Time,2) %in% c(7.14))|
-           (IDD == 43 & round(Time,1) %in% c(13.9))|
-           (IDD == 44 & round(Time,2) %in% c(1.43))|
-           (IDD == 45 & round(Time,2) %in% c(13.86))|
-           (IDD == 55 & Time %in% c(16))|
-           (IDD == 58 & Time %in% c(8))|
-           (IDD == 80 & Time %in% c(12)) |
-           (IDD == 81 & Time %in% c(12)) |
-           (IDD == 89 & Time %in% c(3)) | 
-           (IDD == 90 & Time %in% c(1)) |
-           (IDD == 91 & Time %in% c(14))| 
-           (IDD %in% c(16,50,41,42,44,64,72,75)))) %>%
+               (IDD == 4 & Time %in% c(3,8))|
+               (IDD == 42 & round(Time,2) %in% c(7.14))|
+               (IDD == 43 & round(Time,1) %in% c(13.9))|
+               (IDD == 44 & round(Time,2) %in% c(1.43))|
+               (IDD == 45 & round(Time,2) %in% c(13.86))|
+               (IDD == 55 & Time %in% c(16))|
+               (IDD == 58 & Time %in% c(8))|
+               (IDD == 80 & Time %in% c(12)) |
+               (IDD == 81 & Time %in% c(12)) |
+               (IDD == 89 & Time %in% c(3)) | 
+               (IDD == 90 & Time %in% c(1)) |
+               (IDD == 91 & Time %in% c(14))| 
+               (IDD %in% c(16,50,41,42,44,64,72,75)))) %>%
   filter(n()>3)
 
 #discuss?
@@ -141,8 +141,3 @@ for(i in unique(df_clean$IDD)){
     ggtitle(paste("IDD",i,(df_i$Amendment),df_i$Soil,"TEMP",df_i$Temperature,"WHC",df_i$WHC))
   print(pp)
 }
-
-
-
-
-
