@@ -125,6 +125,8 @@ test$CNratio = as.numeric(str_extract_all(test$Soil,"[0-9.]+[0-9]",simplify = TR
 plot(test$Temperature,log(test$k))
 boxplot(log(test$k)~test$Amendment)
 plot(test$CNratio,log(test$k))
+plot(test$CNratio,(test$k))
+plot(test$CNratio,log(test$N0))
 boxplot(log(test$k)~test$CNratio)
 
 
