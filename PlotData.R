@@ -60,6 +60,17 @@ df_clean = df %>%
                (IDD == 89 & Time %in% c(3)) | 
                (IDD == 90 & Time %in% c(1)) |
                (IDD == 91 & Time %in% c(14))) )
+           (IDD == 4 & Time %in% c(3,8))|
+           (IDD == 42 & round(Time,2) %in% c(7.14))|
+           (IDD == 43 & round(Time,1) %in% c(13.9))|
+           (IDD == 44 & round(Time,2) %in% c(1.43))|
+           (IDD == 45 & round(Time,2) %in% c(13.86))|
+           (IDD == 58 & Time %in% c(8))|
+           (IDD == 80 & Time %in% c(12)) |
+           (IDD == 81 & Time %in% c(12)) |
+           (IDD == 89 & Time %in% c(3)) | 
+           (IDD == 90 & Time %in% c(1)) |
+           (IDD == 91 & Time %in% c(14))) )
 
 #discuss?
 c(16, 41, 50, 64, 72,75)
@@ -102,8 +113,12 @@ plot(df_Nk$WHC,(df_Nk$k))
 
 
 #plot for certain group
+###### HEAD
 for(i in unique(df_clean$IDD[which(df_clean$Temperature == 44)])){
-  df_i = df_clean[which(df_clean$IDD ==i),]
+
+for(i in unique(df_clean$IDD[which(df_clean$Temperature == 25)])){
+
+    df_i = df_clean[which(df_clean$IDD ==i),]
   df_i = df_i[order(df_i$Time),]
   Nim = df_i$N.min.amd.pct
   t = df_i$Time
@@ -121,6 +136,7 @@ for(i in unique(df_clean$IDD[which(df_clean$Temperature == 44)])){
 #Temp 23: IDD 64 72 75 ? 
 
 test = filter(df_Nk, !IDD %in% c(44,64,72,75))
+####### HEAD
 fit = lm(test$k~as.factor(test$Temperature)*as.factor(test$WHC))
 test$Temperature = as.factor(test$Temperature)
 test$WHC = as.factor(test$WHC)
@@ -139,3 +155,14 @@ plot(test$CNratio,(test$k))
 plot(test$CNratio,log(test$N0))
 boxplot(log(test$k)~round(test$CNratio,1))
 boxplot((test$N0)~round(test$CNratio,1))
+
+
+test$CNratio = as.numeric(str_extract_all(test$Soil,"[0-9.]+[0-9]",simplify = TRUE))
+
+plot(test$Temperature,log(test$k))
+boxplot(log(test$k)~test$Amendment)
+plot(test$CNratio,log(test$k))
+boxplot(log(test$k)~test$CNratio)
+
+
+
